@@ -3,8 +3,8 @@ title: "Joe_Rovalino_Data607_wk#1"
 author: "Joe Rovalino"
 date: "8/29/2019"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -25,7 +25,7 @@ Relevant Information:
 
  
 ```{r}
-df <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/mushroom/agaricus-lepiota.data", 
+df <- read.table("https://raw.githubusercontent.com/jrovalino/Data607/master/agaricus-lepiota.data", 
                  header = FALSE, sep=",", stringsAsFactors=FALSE)
 #nrow(df)
 #ncol(df)
