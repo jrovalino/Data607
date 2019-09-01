@@ -1,0 +1,77 @@
+---
+title: "Joe_Rovalino_Data607_wk#1"
+author: "Joe Rovalino"
+date: "8/29/2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Relevant Information:
+    This data set includes descriptions of hypothetical samples
+    corresponding to 23 species of gilled mushrooms in the Agaricus and
+    Lepiota Family (pp. 500-525).  Each species is identified as
+    definitely edible, definitely poisonous, or of unknown edibility and
+    not recommended.  This latter class was combined with the poisonous
+    one.  The Guide clearly states that there is no simple rule for
+    determining the edibility of a mushroom; no rule like ``leaflets
+    three, let it be'' for Poisonous Oak and Ivy.
+
+ 
+```{r}
+df <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/mushroom/agaricus-lepiota.data", 
+                 header = FALSE, sep=",", stringsAsFactors=FALSE)
+#nrow(df)
+#ncol(df)
+str(df)
+#head(df)
+#summary(df)
+dim(df)
+colnames(df)
+```
+Going to create a subset DF with better names. First going to change the columns names to something more descriptive then V#. Found the example to do this on following:
+https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
+
+```{r}
+library(tidyverse)
+subdf <- df %>% 
+  rename(
+    EDIBLE = V1,
+    CONVEX = V2,
+    SMOOTH = V3,
+    WHITE = V4,
+    BRUISES = V5,
+    ALMOND = V6,
+    FREE = V7,
+    CROWDED = V8,
+    NARROW = V9,
+    WHITE = V10,
+    TAPERING = V11,
+    BULBOUS = V12,
+    SMOOTH = V13,
+    SMOOTH = V14,
+    WHITE = V15,
+    WHITE = V16,
+    PARTIAL = V17,
+    WHITE = V18,
+    ONE = V19,
+    PENDANT = V20,
+    PURPLE = V21,
+    SEVERAL = V22,
+    WOODS = V23 
+    )
+
+
+```
+
+Next step: You should include the column that indicates edible or poisonous and three or four other columns. The rename step was already performed above using dplyr::rename(). So now will create the dataframe with 4 columns inclusive of Edible 
+```{r}
+Four_col_df <- subdf[, c(1,3,5,7)]
+head(Four_col_df)
+```
